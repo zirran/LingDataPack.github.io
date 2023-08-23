@@ -1200,9 +1200,9 @@
 						</div>
 						<div class="col-md-6">
 							<div class="bg-light contact-form pd-30">
-								<h5>Have Any Questions</h5>
+								<h5>向我们提问</h5>
 								<div class="spce"></div>
-								<form id="contact-form" class="custom-form" method="post" action="assets/contact.php" role="form">
+								<form id="contact-form" class="custom-form" method="post" action="php/send_email.php" role="form">
 									<div class="messages"></div>
 									<div class="controls">
 										<div class="form-group">
@@ -1214,43 +1214,14 @@
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<textarea id="form_message" name="message" class="form-control" placeholder="Message*" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+											<textarea id="form_message" name="message" class="form-control" placeholder="Message*" rows="4" required="required" data-error="Please, leave us a message."></textarea>
 											<div class="help-block with-errors"></div>
 										</div>
 										<input type="submit" class="btn grdnt-purple" value="Send Message">
 									</div>
 								</form>
-								<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
-
-    $to = '16774996@qq.com'; // 修改为你的邮箱地址
-    $subject = 'New Message from Contact Form';
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "Content-type: text/plain; charset=UTF-8\r\n";
-
-    $email_content = "Name: $name\n";
-    $email_content .= "Email: $email\n\n";
-    $email_content .= "Message:\n$message";
-
-    if (mail($to, $subject, $email_content, $headers)) {
-        http_response_code(200);
-        echo "Thank You! Your message has been sent.";
-    } else {
-        http_response_code(500);
-        echo "Oops! Something went wrong and we couldn't send your message.";
-    }
-} else {
-    http_response_code(403);
-    echo "There was a problem with your submission. Please try again.";
-}
-?>
-
 							</div>
-						</div>
+						</div>						
 					</div>
 				</div>
 			</div>
